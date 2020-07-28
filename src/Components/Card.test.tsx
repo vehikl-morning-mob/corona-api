@@ -10,7 +10,7 @@ describe('Card', () => {
     let wrapper: any;
 
     beforeEach(async () => {
-        CoronaApi.prototype.getResultsForCountry = jest.fn().mockResolvedValue({
+        CoronaApi.getResultsForCountry = jest.fn().mockResolvedValue({
            countryName: countryName,
            numberOfCases: numberOfCases
         });

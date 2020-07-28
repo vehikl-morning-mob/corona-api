@@ -4,7 +4,8 @@ interface ICoronaReport {
 }
 
 export default class CoronaApi {
-    async getResultsForCountry(country: string): Promise<ICoronaReport> {
+
+    static async getResultsForCountry(country: string): Promise<ICoronaReport> {
         return {
             countryName: country,
             numberOfCases: 543
