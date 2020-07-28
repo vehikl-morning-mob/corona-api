@@ -22,11 +22,11 @@ describe('Card', () => {
        jest.clearAllMocks();
     });
 
-    test('renders the country name',  async () => {
+    it('renders the country name',  async () => {
         expect(wrapper.getByText(countryName, {exact: false})).toBeTruthy();
     });
 
-    test('it provides the number of cases for the given country', async() => {
+    it('provides the number of cases for the given country', async() => {
         expect(wrapper.getByText(numberOfCases.toString(), {exact: false})).toBeTruthy();
     });
 
