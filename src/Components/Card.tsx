@@ -10,7 +10,7 @@ const Card: React.FC<ICardProps> = ({countryName}) => {
 
     useEffect(() => {
         CoronaApi.getResultsForCountry(countryName).then((result) => {
-            setNumberOfCases(result.numberOfCases);
+            setNumberOfCases(result.TotalConfirmed);
         })
     }, [])
 
