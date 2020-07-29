@@ -1,17 +1,28 @@
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import {ISummary} from "../types/CovidAPI";
+import {ICountry} from "../types/CovidAPI";
 import CoronaApi from "./CoronaApi";
+import fixture from "../fixtures/summary.json";
 
 describe('CoronaApi', () => {
     let mockServer: MockAdapter;
+    const testCountries: ICountry[] = fixture.Countries;
 
     beforeEach(() => {
         mockServer = new MockAdapter(axios);
     });
 
-    it('getResultsForCountry returns the total number of cases for the requested country', async () => {
-        const targetCountryStats = {
+    it('getResultsForCountry returns the total number of cases for an existing country', async () => {
+        const targetCountryStats = testCountries[0];
+
+        mockServer.onGet('https://api.covid19api.com/summary').reply(200, fixture);
+
+        const actualStats = await CoronaApi.getResultsForCountry(targetCountryStats.Country);
+        expect(actualStats).toEqual(targetCountryStats);
+    });
+
+    it('getResultsForCountry throws when no country was found', async () => {
+        const fakeCountry = {
             Country: "Arstotzka",
             NewConfirmed: 0,
             NewDeaths: 0,
@@ -20,34 +31,10 @@ describe('CoronaApi', () => {
             TotalDeaths: 1,
             TotalRecovered: 0
         };
-        const globalSummary: ISummary = {
-            Countries: [
-                targetCountryStats,
-                {
-                    Country: "Fire Nation",
-                    NewConfirmed: 5,
-                    NewDeaths: 5,
-                    NewRecovered: 5,
-                    TotalConfirmed: 1,
-                    TotalDeaths: 0,
-                    TotalRecovered: 1
-                }
-            ],
-            Date: "2020-01-01",
-            Global: {
-                NewConfirmed: 5,
-                NewDeaths: 5,
-                NewRecovered: 5,
-                TotalConfirmed: 2,
-                TotalDeaths: 1,
-                TotalRecovered: 1
-            }
-        };
-        mockServer.onGet('https://api.covid19api.com/summary').reply(200, globalSummary);
+        mockServer.onGet('https://api.covid19api.com/summary').reply(200, fixture);
 
-        const actualStats = await CoronaApi.getResultsForCountry(targetCountryStats.Country);
-        expect(actualStats).toEqual(targetCountryStats);
-    })
+        await expect(CoronaApi.getResultsForCountry(fakeCountry.Country)).rejects.toThrow();
+    });
 
     afterEach(() => {
         mockServer.restore();
