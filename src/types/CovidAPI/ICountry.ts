@@ -1,5 +1,3 @@
-import {IStats} from "./IStats";
-
-export interface ICountry extends IStats {
+export interface ICountry extends ICountry {
     Country: string;
 }

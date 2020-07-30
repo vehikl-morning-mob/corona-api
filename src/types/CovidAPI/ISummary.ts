@@ -1,8 +1,8 @@
 import {ICountry} from "./ICountry";
-import {IStats} from "./IStats";
+import {ICountry} from "./IStats";
 
 export interface ISummary {
     Countries: ICountry[],
     Date: String,
-    Global: IStats
+    Global: ICountry
 }

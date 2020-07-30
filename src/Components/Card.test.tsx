@@ -23,9 +23,21 @@ describe('Card', () => {
         expect(wrapper.getByText(country.Country, {exact: false})).toBeTruthy();
     });
 
-    it('provides the number of cases for the given country', async() => {
-        expect(wrapper.getByText(country.TotalConfirmed.toString(), {exact: false})).toBeTruthy();
+    describe('data being displayed for the given country', () => {
+        it('provides the total number of confirmed cases', async() => {
+            expect(wrapper.getByText(country.TotalConfirmed.toString(), {exact: false})).toBeTruthy();
+        });
+
+        it('provides the total number of deaths', async() => {
+            expect(wrapper.getByText(country.TotalDeaths.toString(), {exact: false})).toBeTruthy();
+        });
+
+        it('provides the total number of recovered cases', async() => {
+            expect(wrapper.getByText(country.TotalRecovered.toString(), {exact: false})).toBeTruthy();
+        });
     });
+
+
 
     async function renderComponent() {
         return act(async () => {
