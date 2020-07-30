@@ -37,8 +37,6 @@ describe('Card', () => {
         });
     });
 
-
-
     async function renderComponent() {
         return act(async () => {
             wrapper = await render(<Card countryName={country.Country} />);

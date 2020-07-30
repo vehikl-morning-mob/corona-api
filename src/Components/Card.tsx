@@ -3,18 +3,29 @@ import CoronaApi from "../Api/CoronaApi";
 import {ICountry} from "../types/CovidAPI";
 
 const cardStyle = {
-    padding: "1rem 2rem",
+    padding: "1rem",
     border: "1px solid gray",
     borderRadius: "1rem",
-    maxWidth: "10rem",
+    maxWidth: "15rem",
     textAlign: "center" as "center"
 };
+
+const countryNameStyle = {
+    fontSize: "1.25rem",
+};
+
+const attributesListStyle = {
+    listStyle: "none",
+    textAlign: "left" as "left",
+}
+
+const attributeListItemStyle  = {
+    marginTop: "0.25rem",
+}
 
 interface ICardProps {
     countryName: string;
 }
-
-
 
 const initialStatistics: ICountry = {
     Country: '',
@@ -33,10 +44,18 @@ const Card: React.FC<ICardProps> = ({countryName}) => {
         CoronaApi.getResultsForCountry(countryName).then((result) => {
             setStatistics({...result});
         })
-    }, [])
+    }, []);
 
     return (
-        <p style={cardStyle}>Country: {countryName}, Total Confirmed: {statistics.TotalConfirmed}, Total Deaths: {statistics.TotalDeaths}, Total Recovered: {statistics.TotalRecovered}</p>
+        <div style={cardStyle}>
+            <h2 style={countryNameStyle}>{countryName}</h2>
+            <ul style={attributesListStyle}>
+
+                <li style={attributeListItemStyle}>Total Confirmed: {statistics.TotalConfirmed}</li>
+                <li style={attributeListItemStyle}>Total Deaths: {statistics.TotalDeaths}</li>
+                <li style={attributeListItemStyle}>Total Recovered: {statistics.TotalRecovered}</li>
+            </ul>
+        </div>
     )
 };
 

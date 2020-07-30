@@ -1,4 +1,4 @@
-export interface ICountry {
+export interface IStats {
     NewConfirmed: number;
     NewDeaths: number;
     NewRecovered: number;
