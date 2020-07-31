@@ -15,6 +15,8 @@ describe('Card', () => {
         await renderComponent();
    });
 
+
+
     afterEach(() => {
        jest.clearAllMocks();
     });

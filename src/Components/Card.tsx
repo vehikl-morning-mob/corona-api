@@ -1,27 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState} from "react";
 import CoronaApi from "../Api/CoronaApi";
 import {ICountry} from "../types/CovidAPI";
-
-const cardStyle = {
-    padding: "1rem",
-    border: "1px solid gray",
-    borderRadius: "1rem",
-    maxWidth: "15rem",
-    textAlign: "center" as "center"
-};
-
-const countryNameStyle = {
-    fontSize: "1.25rem",
-};
-
-const attributesListStyle = {
-    listStyle: "none",
-    textAlign: "left" as "left",
-}
-
-const attributeListItemStyle  = {
-    marginTop: "0.25rem",
-}
+import "./Card.css"
 
 interface ICardProps {
     countryName: string;
@@ -47,13 +27,13 @@ const Card: React.FC<ICardProps> = ({countryName}) => {
     }, []);
 
     return (
-        <div style={cardStyle}>
-            <h2 style={countryNameStyle}>{countryName}</h2>
-            <ul style={attributesListStyle}>
+        <div className="card-container">
+            <h2>{countryName}</h2>
+            <ul>
 
-                <li style={attributeListItemStyle}>Total Confirmed: {statistics.TotalConfirmed}</li>
-                <li style={attributeListItemStyle}>Total Deaths: {statistics.TotalDeaths}</li>
-                <li style={attributeListItemStyle}>Total Recovered: {statistics.TotalRecovered}</li>
+                <li>Total Confirmed: {statistics.TotalConfirmed}</li>
+                <li>Total Deaths: {statistics.TotalDeaths}</li>
+                <li>Total Recovered: {statistics.TotalRecovered}</li>
             </ul>
         </div>
     )
