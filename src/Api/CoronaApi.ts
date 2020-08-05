@@ -17,9 +17,9 @@ export default class CoronaApi {
     static async getResultsForProvinces(country: string): Promise<IProvince[]> {
         const response = await axios.get<IProvince[]>('https://api.covid19api.com/country/canada');
         return response.data.reduce((accumulated: IProvince[], provinceStat: IProvince) => {
-            let ontarioStats = accumulated.find((province: IProvince) => province.Province === provinceStat.Province);
-            if (!ontarioStats) {
-                ontarioStats = {
+            let previousStats = accumulated.find((province: IProvince) => province.Province === provinceStat.Province);
+            if (!previousStats) {
+                previousStats = {
                     Country: provinceStat.Country,
                     Province: provinceStat.Province,
                     Confirmed: 0,
@@ -29,16 +29,16 @@ export default class CoronaApi {
                 }
             }
 
-            const taco =  {
+            const updatedStats =  {
                 Country: provinceStat.Country,
                 Province: provinceStat.Province,
-                Confirmed: ontarioStats.Confirmed + provinceStat.Confirmed,
-                Deaths: ontarioStats.Deaths + provinceStat.Deaths,
-                Recovered: ontarioStats.Recovered + provinceStat.Recovered,
-                Active: ontarioStats.Active + provinceStat.Active,
+                Confirmed: previousStats.Confirmed + provinceStat.Confirmed,
+                Deaths: previousStats.Deaths + provinceStat.Deaths,
+                Recovered: previousStats.Recovered + provinceStat.Recovered,
+                Active: previousStats.Active + provinceStat.Active,
             };
 
-            return [ ... accumulated.filter(data => data.Province !== taco.Province), taco];
+            return [ ... accumulated.filter(data => data.Province !== updatedStats.Province), updatedStats];
         }, []);
     }
 }
