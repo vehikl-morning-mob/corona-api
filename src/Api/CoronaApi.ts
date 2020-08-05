@@ -17,30 +17,29 @@ export default class CoronaApi {
     static async getResultsForProvinces(country: string): Promise<IProvince[]> {
         const response = await axios.get<IProvince[]>('https://api.covid19api.com/country/canada');
         return response.data.reduce((accumulated: IProvince[], provinceStat: IProvince) => {
-            if (provinceStat.Province === 'Ontario') {
-                let ontarioStats = accumulated.find((province: IProvince) => province.Province === 'Ontario');
-                if (!ontarioStats) {
-                    ontarioStats = {
-                        Country: "Canada",
-                        Province: "Ontario",
-                        Confirmed: 0,
-                        Deaths: 0,
-                        Recovered: 0,
-                        Active: 0,
-                    }
+            let ontarioStats = accumulated.find((province: IProvince) => province.Province === provinceStat.Province);
+            if (!ontarioStats) {
+                ontarioStats = {
+                    Country: provinceStat.Country,
+                    Province: provinceStat.Province,
+                    Confirmed: 0,
+                    Deaths: 0,
+                    Recovered: 0,
+                    Active: 0,
                 }
-
-                return [{
-                    Country: "Canada",
-                    Province: "Ontario",
-                    Confirmed: ontarioStats.Confirmed + provinceStat.Confirmed,
-                    Deaths: ontarioStats.Deaths + provinceStat.Deaths,
-                    Recovered: ontarioStats.Recovered + provinceStat.Recovered,
-                    Active: ontarioStats.Active + provinceStat.Active,
-                }]
             }
 
-            return accumulated;
+            const taco =  {
+                Country: provinceStat.Country,
+                Province: provinceStat.Province,
+                Confirmed: ontarioStats.Confirmed + provinceStat.Confirmed,
+                Deaths: ontarioStats.Deaths + provinceStat.Deaths,
+                Recovered: ontarioStats.Recovered + provinceStat.Recovered,
+                Active: ontarioStats.Active + provinceStat.Active,
+            };
+
+
+            return [ ... accumulated.filter(data => data.Province !== taco.Province), taco];
         }, []);
     }
 }
