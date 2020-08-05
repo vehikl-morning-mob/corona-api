@@ -1,0 +1,114 @@
+[
+  {
+    "Country": "Canada",
+    "Province": "Ontario",
+    "Confirmed": 2,
+    "Deaths": 0,
+    "Recovered": 0,
+    "Active": 1
+  },
+  {
+    "Country": "Canada",
+    "Province": "Nova Scotia",
+    "Confirmed": 0,
+    "Deaths": 0,
+    "Recovered": 0,
+    "Active": 0
+  },
+  {
+    "Country": "Canada",
+    "Province": "Prince Edward Island",
+    "Confirmed": 0,
+    "Deaths": 0,
+    "Recovered": 0,
+    "Active": 0
+  },
+  {
+    "Country": "Canada",
+    "Province": "Quebec",
+    "Confirmed": 0,
+    "Deaths": 0,
+    "Recovered": 0,
+    "Active": 0
+  },
+  {
+    "Country": "Canada",
+    "Province": "Saskatchewan",
+    "Confirmed": 0,
+    "Deaths": 0,
+    "Recovered": 0,
+    "Active": 0
+  },
+  {
+    "Country": "Canada",
+    "Province": "Yukon",
+    "Confirmed": 0,
+    "Deaths": 0,
+    "Recovered": 0,
+    "Active": 0
+  },
+  {
+    "Country": "Canada",
+    "Province": "",
+    "Confirmed": 0,
+    "Deaths": 0,
+    "Recovered": 0,
+    "Active": 0
+  },
+  {
+    "Country": "Canada",
+    "Province": "Alberta",
+    "Confirmed": 0,
+    "Deaths": 0,
+    "Recovered": 0,
+    "Active": 0
+  },
+  {
+    "Country": "Canada",
+    "Province": "British Columbia",
+    "Confirmed": 0,
+    "Deaths": 0,
+    "Recovered": 0,
+    "Active": 0
+  },
+  {
+    "Country": "Canada",
+    "Province": "Grand Princess",
+    "Confirmed": 0,
+    "Deaths": 0,
+    "Recovered": 0,
+    "Active": 0
+  },
+  {
+    "Country": "Canada",
+    "Province": "Manitoba",
+    "Confirmed": 0,
+    "Deaths": 0,
+    "Recovered": 0,
+    "Active": 0
+  },
+  {
+    "Country": "Canada",
+    "Province": "New Brunswick",
+    "Confirmed": 0,
+    "Deaths": 0,
+    "Recovered": 0,
+    "Active": 0
+  },
+  {
+    "Country": "Canada",
+    "Province": "Newfoundland and Labrador",
+    "Confirmed": 0,
+    "Deaths": 0,
+    "Recovered": 0,
+    "Active": 0
+  },
+  {
+    "Country": "Canada",
+    "Province": "Northwest Territories",
+    "Confirmed": 0,
+    "Deaths": 0,
+    "Recovered": 0,
+    "Active": 0
+  }
+]
