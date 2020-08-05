@@ -14,6 +14,10 @@ describe('CoronaApi', () => {
         mockServer = new MockAdapter(axios);
     });
 
+    afterEach(() => {
+        mockServer.restore();
+    });
+
     it('getResultsForCountry returns the total number of cases for an existing country', async () => {
         const targetCountryStats = testCountries[0];
 
@@ -89,20 +93,7 @@ describe('CoronaApi', () => {
         mockServer.onGet('https://api.covid19api.com/country/canada').reply(200, ByCountryRawFixture);
 
         const actualStats = await CoronaApi.getResultsForProvinces('canada');
-        // const expected = [
-        //     {
-        //         "Country": "Canada",
-        //         "Province": "Ontario",
-        //         "Confirmed": mockCountryData[0].Confirmed + mockCountryData[1].Confirmed,
-        //         "Deaths": mockCountryData[0].Deaths + mockCountryData[1].Deaths,
-        //         "Recovered": mockCountryData[0].Recovered + mockCountryData[1].Recovered,
-        //         "Active": mockCountryData[0].Active + mockCountryData[1].Active,
-        //     }
-        // ];
-        expect(actualStats).toEqual(ByCountryProcessedFixture);
-    });
 
-    afterEach(() => {
-        mockServer.restore();
+        expect(actualStats).toEqual(ByCountryProcessedFixture);
     });
 });

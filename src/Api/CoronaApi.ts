@@ -38,7 +38,6 @@ export default class CoronaApi {
                 Active: ontarioStats.Active + provinceStat.Active,
             };
 
-
             return [ ... accumulated.filter(data => data.Province !== taco.Province), taco];
         }, []);
     }
