@@ -16,29 +16,30 @@ export default class CoronaApi {
 
     static async getResultsForProvinces(country: string): Promise<IProvince[]> {
         const response = await axios.get<IProvince[]>('https://api.covid19api.com/country/canada');
-        return response.data.reduce((accumulated: IProvince[], provinceStat: IProvince) => {
-            let previousStats = accumulated.find((province: IProvince) => province.Province === provinceStat.Province);
-            if (!previousStats) {
-                previousStats = {
-                    Country: provinceStat.Country,
-                    Province: provinceStat.Province,
-                    Confirmed: 0,
-                    Deaths: 0,
-                    Recovered: 0,
-                    Active: 0,
+
+        const provinceNames = new Set(response.data.map(provinceStat => provinceStat.Province));
+
+        const initialValue: IProvince = {
+            Country: '',
+            Province: '',
+            Confirmed: 0,
+            Deaths: 0,
+            Recovered: 0,
+            Active: 0,
+        };
+
+        return Array.from(provinceNames).map(provinceName => {
+            const provinceDataPoints = response.data.filter(data => data.Province == provinceName);
+            return provinceDataPoints.reduce((accumulated: IProvince, dataPoint: IProvince) => {
+                return {
+                    Country: dataPoint.Country,
+                    Province: dataPoint.Province,
+                    Confirmed: accumulated.Confirmed + dataPoint.Confirmed,
+                    Deaths: accumulated.Deaths + dataPoint.Deaths,
+                    Recovered: accumulated.Recovered + dataPoint.Recovered,
+                    Active: accumulated.Active + dataPoint.Active,
                 }
-            }
-
-            const updatedStats =  {
-                Country: provinceStat.Country,
-                Province: provinceStat.Province,
-                Confirmed: previousStats.Confirmed + provinceStat.Confirmed,
-                Deaths: previousStats.Deaths + provinceStat.Deaths,
-                Recovered: previousStats.Recovered + provinceStat.Recovered,
-                Active: previousStats.Active + provinceStat.Active,
-            };
-
-            return [ ... accumulated.filter(data => data.Province !== updatedStats.Province), updatedStats];
-        }, []);
+            }, initialValue);
+        });
     }
 }
