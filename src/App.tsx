@@ -43,8 +43,8 @@ function App() {
         <>
             <Card title='Canada' statistics={statistics}/>
             <ul>
-                {provinceStatistics.map(provinceStat => {
-                        return <li>
+                {provinceStatistics.map((provinceStat, index) => {
+                        return <li key={index}>
                             <Card title={provinceStat.Province} statistics={convertToIStats(provinceStat)}/>
                         </li>
                     }
