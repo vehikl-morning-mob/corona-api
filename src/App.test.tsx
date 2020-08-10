@@ -1,5 +1,5 @@
 import React from 'react';
-import {render} from '@testing-library/react';
+import {act, render} from '@testing-library/react';
 import App from './App';
 import CoronaApi from './Api/CoronaApi';
 import {IProvince} from './types/CovidAPI';
@@ -23,17 +23,24 @@ const resultForProvinces: IProvince[] = [
     }
 ];
 
-xdescribe('App', () => {
-    beforeEach(() => {
+describe('App', () => {
+    let wrapper: any;
+
+    beforeEach(async () => {
         CoronaApi.getResultsForProvinces = jest.fn().mockResolvedValue(resultForProvinces);
+        await renderComponent();
     });
 
     it('Displays a card for each province', async () => {
-        const wrapper = await render(<App/>);
-
         resultForProvinces.forEach(result => {
             const provinceCard = wrapper.queryByText(result.Province);
             expect(provinceCard).toBeTruthy();
         })
     });
+
+    async function renderComponent() {
+        return act(async () => {
+            wrapper = await render(<App/>);
+        });
+    }
 });
