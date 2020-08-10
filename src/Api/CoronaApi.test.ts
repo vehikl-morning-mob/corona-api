@@ -96,4 +96,42 @@ describe('CoronaApi', () => {
 
         expect(actualStats).toEqual(ByCountryProcessedFixture);
     });
+
+    it('skips provinces with empty names', async () => {
+        const mockCountryData = [
+            {
+                "Country": "Canada",
+                "CountryCode": "CA",
+                "Province": "Ontario",
+                "City": "",
+                "CityCode": "",
+                "Lat": "51.25",
+                "Lon": "-85.32",
+                "Confirmed": 0,
+                "Deaths": 0,
+                "Recovered": 0,
+                "Active": 1,
+                "Date": "2020-01-22T00:00:00Z"
+            },
+            {
+                "Country": "Canada",
+                "CountryCode": "CA",
+                "Province": "",
+                "City": "",
+                "CityCode": "",
+                "Lat": "51.25",
+                "Lon": "-85.32",
+                "Confirmed": 2,
+                "Deaths": 0,
+                "Recovered": 0,
+                "Active": 0,
+                "Date": "2020-01-23T00:00:00Z"
+            },
+        ]
+        mockServer.onGet('https://api.covid19api.com/country/canada').reply(200, mockCountryData);
+
+        const actualStats = await CoronaApi.getResultsForProvinces('canada');
+
+        expect(actualStats).toHaveLength(1);
+    });
 });

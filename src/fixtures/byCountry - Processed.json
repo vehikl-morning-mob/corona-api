@@ -49,14 +49,6 @@
   },
   {
     "Country": "Canada",
-    "Province": "",
-    "Confirmed": 0,
-    "Deaths": 0,
-    "Recovered": 0,
-    "Active": 0
-  },
-  {
-    "Country": "Canada",
     "Province": "Alberta",
     "Confirmed": 0,
     "Deaths": 0,

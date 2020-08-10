@@ -16,8 +16,9 @@ export default class CoronaApi {
 
     static async getResultsForProvinces(country: string): Promise<IProvince[]> {
         const response = await axios.get<IProvince[]>('https://api.covid19api.com/country/canada');
+        const statsForProvincesWithName = response.data.filter(data => data.Province.length > 0);
 
-        const provinceNames = new Set(response.data.map(provinceStat => provinceStat.Province));
+        const provinceNames = new Set(statsForProvincesWithName.map(provinceStat => provinceStat.Province));
 
         const initialValue: IProvince = {
             Country: '',
@@ -29,8 +30,9 @@ export default class CoronaApi {
         };
 
         return Array.from(provinceNames).map(provinceName => {
-            const provinceDataPoints = response.data.filter(data => data.Province == provinceName);
+            const provinceDataPoints = statsForProvincesWithName.filter(data => data.Province == provinceName);
             return provinceDataPoints.reduce((accumulated: IProvince, dataPoint: IProvince) => {
+
                 return {
                     Country: dataPoint.Country,
                     Province: dataPoint.Province,
