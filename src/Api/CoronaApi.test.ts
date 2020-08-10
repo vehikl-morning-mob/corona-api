@@ -89,7 +89,7 @@ describe('CoronaApi', () => {
         expect(actualStats).toEqual(expected);
     });
 
-    it('tacos', async () => {
+    it('can get summary data for complex set of provinces', async () => {
         mockServer.onGet('https://api.covid19api.com/country/canada').reply(200, ByCountryRawFixture);
 
         const actualStats = await CoronaApi.getResultsForProvinces('canada');
