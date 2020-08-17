@@ -43,6 +43,13 @@
   },
   {
     "Country": "Canada",
+    "Province": "Nunavut",
+    "Confirmed": 0,
+    "Deaths": 0,
+    "Active": 0
+  },
+  {
+    "Country": "Canada",
     "Province": "Alberta",
     "Confirmed": 0,
     "Deaths": 0,

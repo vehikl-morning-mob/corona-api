@@ -96,7 +96,7 @@ describe('CoronaApi', () => {
         expect(actualStats).toEqual(ByCountryProcessedFixture);
     });
 
-    it('skips provinces with empty names', async () => {
+    it('treats provinces with empty names as Nunavut', async () => {
         const mockCountryData = [
             {
                 "Country": "Canada",
@@ -126,11 +126,27 @@ describe('CoronaApi', () => {
                 "Active": 0,
                 "Date": "2020-01-23T00:00:00Z"
             },
+            {
+                "Country": "Canada",
+                "CountryCode": "CA",
+                "Province": "British Columbia",
+                "City": "",
+                "CityCode": "",
+                "Lat": "51.25",
+                "Lon": "-85.32",
+                "Confirmed": 2,
+                "Deaths": 0,
+                "Recovered": 0,
+                "Active": 0,
+                "Date": "2020-01-23T00:00:00Z"
+            },
         ]
         mockServer.onGet('https://api.covid19api.com/country/canada').reply(200, mockCountryData);
 
         const actualStats = await CoronaApi.getResultsForProvinces('canada');
 
-        expect(actualStats).toHaveLength(1);
+        expect(actualStats[1]).toMatchObject({
+            "Province": "Nunavut"
+        });
     });
 });
