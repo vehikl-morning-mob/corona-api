@@ -25,12 +25,11 @@ export default class CoronaApi {
             Province: '',
             Confirmed: 0,
             Deaths: 0,
-            Recovered: 0,
             Active: 0,
         };
 
         return Array.from(provinceNames).map(provinceName => {
-            const provinceDataPoints = statsForProvincesWithName.filter(data => data.Province == provinceName);
+            const provinceDataPoints = statsForProvincesWithName.filter(data => data.Province === provinceName);
             return provinceDataPoints.reduce((accumulated: IProvince, dataPoint: IProvince) => {
 
                 return {
@@ -38,7 +37,6 @@ export default class CoronaApi {
                     Province: dataPoint.Province,
                     Confirmed: accumulated.Confirmed + dataPoint.Confirmed,
                     Deaths: accumulated.Deaths + dataPoint.Deaths,
-                    Recovered: accumulated.Recovered + dataPoint.Recovered,
                     Active: accumulated.Active + dataPoint.Active,
                 }
             }, initialValue);

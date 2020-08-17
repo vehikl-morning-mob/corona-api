@@ -3,6 +3,5 @@ export interface IProvince {
     Province: string;
     Confirmed: number;
     Deaths: number;
-    Recovered: number;
     Active: number;
 }

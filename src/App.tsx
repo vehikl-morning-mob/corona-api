@@ -9,10 +9,8 @@ const initialStatistics: ICountry = {
     Country: '',
     NewConfirmed: 0,
     NewDeaths: 0,
-    NewRecovered: 0,
     TotalConfirmed: 0,
     TotalDeaths: 0,
-    TotalRecovered: 0,
 };
 
 function App() {
@@ -23,10 +21,8 @@ function App() {
         return {
             NewConfirmed: 0,
             NewDeaths: 0,
-            NewRecovered: 0,
             TotalConfirmed: province.Confirmed,
             TotalDeaths: province.Deaths,
-            TotalRecovered: province.Recovered
         }
     }
 

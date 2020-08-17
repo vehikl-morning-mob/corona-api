@@ -4,7 +4,6 @@
     "Province": "Ontario",
     "Confirmed": 2,
     "Deaths": 0,
-    "Recovered": 0,
     "Active": 1
   },
   {
@@ -12,7 +11,6 @@
     "Province": "Nova Scotia",
     "Confirmed": 0,
     "Deaths": 0,
-    "Recovered": 0,
     "Active": 0
   },
   {
@@ -20,7 +18,6 @@
     "Province": "Prince Edward Island",
     "Confirmed": 0,
     "Deaths": 0,
-    "Recovered": 0,
     "Active": 0
   },
   {
@@ -28,7 +25,6 @@
     "Province": "Quebec",
     "Confirmed": 0,
     "Deaths": 0,
-    "Recovered": 0,
     "Active": 0
   },
   {
@@ -36,7 +32,6 @@
     "Province": "Saskatchewan",
     "Confirmed": 0,
     "Deaths": 0,
-    "Recovered": 0,
     "Active": 0
   },
   {
@@ -44,7 +39,6 @@
     "Province": "Yukon",
     "Confirmed": 0,
     "Deaths": 0,
-    "Recovered": 0,
     "Active": 0
   },
   {
@@ -52,7 +46,6 @@
     "Province": "Alberta",
     "Confirmed": 0,
     "Deaths": 0,
-    "Recovered": 0,
     "Active": 0
   },
   {
@@ -60,7 +53,6 @@
     "Province": "British Columbia",
     "Confirmed": 0,
     "Deaths": 0,
-    "Recovered": 0,
     "Active": 0
   },
   {
@@ -68,7 +60,6 @@
     "Province": "Grand Princess",
     "Confirmed": 0,
     "Deaths": 0,
-    "Recovered": 0,
     "Active": 0
   },
   {
@@ -76,7 +67,6 @@
     "Province": "Manitoba",
     "Confirmed": 0,
     "Deaths": 0,
-    "Recovered": 0,
     "Active": 0
   },
   {
@@ -84,7 +74,6 @@
     "Province": "New Brunswick",
     "Confirmed": 0,
     "Deaths": 0,
-    "Recovered": 0,
     "Active": 0
   },
   {
@@ -92,7 +81,6 @@
     "Province": "Newfoundland and Labrador",
     "Confirmed": 0,
     "Deaths": 0,
-    "Recovered": 0,
     "Active": 0
   },
   {
@@ -100,7 +88,6 @@
     "Province": "Northwest Territories",
     "Confirmed": 0,
     "Deaths": 0,
-    "Recovered": 0,
     "Active": 0
   }
 ]

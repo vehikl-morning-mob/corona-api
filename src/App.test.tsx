@@ -10,16 +10,14 @@ const resultForProvinces: IProvince[] = [
         Province: 'Alpha',
         Confirmed: 0,
         Deaths: 0,
-        Recovered: 0,
-        Active: 0,
+        Active: 0
     },
     {
         Country: 'Arztozka',
         Province: 'Bravo',
         Confirmed: 0,
         Deaths: 0,
-        Recovered: 0,
-        Active: 0,
+        Active: 0
     }
 ];
 

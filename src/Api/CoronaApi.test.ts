@@ -82,7 +82,6 @@ describe('CoronaApi', () => {
                 "Province": "Ontario",
                 "Confirmed": mockCountryData[0].Confirmed + mockCountryData[1].Confirmed,
                 "Deaths": mockCountryData[0].Deaths + mockCountryData[1].Deaths,
-                "Recovered": mockCountryData[0].Recovered + mockCountryData[1].Recovered,
                 "Active": mockCountryData[0].Active + mockCountryData[1].Active,
             }
         ];

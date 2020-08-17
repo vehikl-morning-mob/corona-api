@@ -15,7 +15,6 @@ const Card: React.FC<ICardProps> = ({title, statistics}) => {
 
                 <li>Total Confirmed: {statistics.TotalConfirmed}</li>
                 <li>Total Deaths: {statistics.TotalDeaths}</li>
-                <li>Total Recovered: {statistics.TotalRecovered}</li>
             </ul>
         </div>
     )

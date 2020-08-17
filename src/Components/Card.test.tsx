@@ -7,10 +7,8 @@ import {IStats} from '../types/CovidAPI';
 const statistics: IStats = {
     NewConfirmed: 4,
     NewDeaths: 1,
-    NewRecovered: 50,
     TotalConfirmed: 20,
     TotalDeaths: 60,
-    TotalRecovered: 23
 };
 
 const title: string = 'The given title';
@@ -39,10 +37,6 @@ describe('Card', () => {
 
         it('provides the total number of deaths', async () => {
             expect(wrapper.getByText(statistics.TotalDeaths.toString(), {exact: false})).toBeTruthy();
-        });
-
-        it('provides the total number of recovered cases', async () => {
-            expect(wrapper.getByText(statistics.TotalRecovered.toString(), {exact: false})).toBeTruthy();
         });
     });
 
