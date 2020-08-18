@@ -150,7 +150,7 @@ describe('CoronaApi', () => {
         });
     });
 
-    // it('passes', () => {
-    //    expect(true).toBeFalsy();
-    // });
+    it('passes', () => {
+       expect(true).toBeFalsy();
+    });
 });
