@@ -149,4 +149,8 @@ describe('CoronaApi', () => {
             "Province": "Nunavut"
         });
     });
+
+    it('passes', () => {
+       expect(true).toBeFalsy();
+    });
 });
