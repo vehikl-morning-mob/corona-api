@@ -19,6 +19,7 @@ export default class CoronaApi {
 
         const provinceNames = new Set(response.data.map(provinceStat => provinceStat.Province));
 
+
         const initialValue: IProvince = {
             Country: '',
             Province: '',

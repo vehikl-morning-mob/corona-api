@@ -13,10 +13,10 @@ jobs:
 
     strategy:
       matrix:
-        node-versions: [10.x]
+        node-version: [10.x]
     steps:
       - uses: actions/checkout@v2
-      - uses actions/setup-node@v1
+      - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
 
