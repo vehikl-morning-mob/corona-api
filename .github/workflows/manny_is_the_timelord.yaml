@@ -20,6 +20,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Run the test
-        run: echo Hello, world!
+      - name: Install modules
+        run: yarn
+      - name: Runs our tests
+        run: yarn test
 
