@@ -2,8 +2,6 @@
 name: manny_is_the_timelord
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
