@@ -1,0 +1,25 @@
+
+name: manny_is_the_timelord
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-versions: [10.x]
+    steps:
+      - uses: actions/checkout@v2
+      - uses actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Run the test
+        run: echo Hello, world!
+
